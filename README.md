@@ -24,8 +24,6 @@
 1. Set up a Python environment:
    ```
    python -m venv env
-   .\env\Scripts\activate
-   py -m pip install -r requirements.txt
    ```
 1. Activate the environment:
    ```
