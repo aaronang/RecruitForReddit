@@ -27,6 +27,14 @@
    .\env\Scripts\activate
    py -m pip install -r requirements.txt
    ```
+1. Activate the environment:
+   ```
+   .\env\Scripts\activate
+   ```
+1. Install dependencies:
+   ```
+   py -m pip install -r requirements.txt
+   ```
 1. Run the code:
    ```
    py main.py
