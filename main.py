@@ -4,19 +4,19 @@ import time
 from dotenv import dotenv_values
 
 CONFIG = dotenv_values(".env")
-SUBREDDIT_NAME = 'cars'
+SUBREDDIT_NAME = 'AskReddit'
 MIN_WAIT_TIME = 15
 MAX_WAIT_TIME = 45
 
 SUBJECT_LINES = [
-    "EXAMPLE SUBJECT LINE 1",
-    "EXAMPLE SUBJECT LINE 2",
+    "How is it going?",
+    "How are you?",
 ]
-MESSAGE_TEMPLATE = """Hello {username}, this is an automated message sent by a Python script. Thanks for participating in the {subreddit_name} subreddit!"""
+MESSAGE_TEMPLATE = """Hello {username}, How are you doing?"""
 
 reddit = praw.Reddit(client_id=CONFIG.get("CLIENT_ID"),
                      client_secret=CONFIG.get("CLIENT_SECRET"),
-                     user_agent=f"Connect for Reddit (by u/${CONFIG.get('USERNAME')})",
+                     user_agent=f"DM for Reddit (by u/{CONFIG.get('USERNAME')})",
                      username=CONFIG.get("USERNAME"),
                      password=CONFIG.get("PASSWORD"))
 
@@ -25,7 +25,7 @@ subreddit = reddit.subreddit(SUBREDDIT_NAME)
 post_count = 0
 usernames = set()
 
-for post in subreddit.hot(limit=10):
+for post in subreddit.hot(limit=1):
     post_count += 1
     print(f"Post {post_count}: {post.title}")
     post.comments.replace_more(limit=None)
@@ -43,9 +43,7 @@ for post in subreddit.hot(limit=10):
             except AttributeError:
                 pass
 
-print("Usernames of commenters and repliers:")
-for username in usernames:
-    print(username)
+print(f"Found {len(usernames)} usernames.")
 
 with open('sent_messages.txt', 'a+') as f:
     f.seek(0)
@@ -54,7 +52,7 @@ with open('sent_messages.txt', 'a+') as f:
 for username in usernames:
     if username not in sent_usernames:
         # TODO: Don't forget to update the line below according to the message template variables
-        message = MESSAGE_TEMPLATE.format(username=username, subreddit_name=SUBREDDIT_NAME)  
+        message = MESSAGE_TEMPLATE.format(username=username)  
         try:
             reddit.redditor(username).message(random.choice(SUBJECT_LINES), message)
             print(f"Message sent to {username}")    

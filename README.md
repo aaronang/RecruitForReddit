@@ -2,9 +2,10 @@
 
 ## Getting started
 
+> Note: This script won't work with a newly created account as it can't send private messages.
+
 ### Getting API access
 
-1. Create a Reddit account.
 1. Go to [apps settings](https://www.reddit.com/prefs/apps).
 1. Click on "create another app..." all the way at the bottom of the page.
 1. Provide a name.
