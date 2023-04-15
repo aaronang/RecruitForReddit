@@ -20,7 +20,7 @@
 
 1. Rename the `.env.example` file to `.env`.
 1. Fill in the values in `.env`.
-1. Update `SUBJECT_LINES`, `MESSAGE_TEMPLATE`, and line 57 in `main.py`.
+1. Update `SUBJECT_LINES`, `MESSAGE_TEMPLATE`, and the line below the `TODO` in `main.py`.
 1. Set up a Python environment:
    ```
    python -m venv env

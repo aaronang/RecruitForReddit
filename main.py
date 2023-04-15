@@ -53,7 +53,7 @@ with open('sent_messages.txt', 'a+') as f:
 
 for username in usernames:
     if username not in sent_usernames:
-        # Don't forget to update this line according to the message template variables
+        # TODO: Don't forget to update the line below according to the message template variables
         message = MESSAGE_TEMPLATE.format(username=username, subreddit_name=SUBREDDIT_NAME)  
         try:
             reddit.redditor(username).message(random.choice(SUBJECT_LINES), message)
