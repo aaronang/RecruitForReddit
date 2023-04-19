@@ -34,7 +34,7 @@ for post in subreddit.hot(limit=POST_LIMIT):
     for comment in post.comments.list():
         try:
             username = comment.author.name
-            if username not in moderators:
+            if username not in moderators and "bot" not in username.lower():
                 usernames.add(username)
         except AttributeError:
             pass
