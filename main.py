@@ -33,7 +33,8 @@ for post in subreddit.hot(limit=POST_LIMIT):
     for comment in post.comments.list():
         try:
             username = comment.author.name
-            usernames.add(username)
+            if "mod" not in username.lower():
+                usernames.add(username)
         except AttributeError:
             pass
 
