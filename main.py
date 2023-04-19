@@ -22,7 +22,7 @@ reddit = praw.Reddit(client_id=CONFIG.get("CLIENT_ID"),
                      password=CONFIG.get("PASSWORD"))
 
 subreddit = reddit.subreddit(SUBREDDIT_NAME)
-moderators = [mod.name for mod in subreddit.moderator()]
+moderators = {mod.name for mod in subreddit.moderator()}
 
 post_count = 0
 usernames = set()
