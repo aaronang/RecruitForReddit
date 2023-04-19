@@ -39,8 +39,7 @@ for post in subreddit.hot(limit=POST_LIMIT):
 
 print(f"Found {len(usernames)} usernames.")
 
-with open('sent_messages.txt', 'a+') as f:
-    f.seek(0)
+with open('sent_messages.txt', 'r') as f:
     sent_usernames = {line.strip() for line in f}
 
 for username in usernames:
