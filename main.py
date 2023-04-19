@@ -4,7 +4,7 @@ import time
 from dotenv import dotenv_values
 
 CONFIG = dotenv_values(".env")
-SUBREDDIT_NAME = 'AskReddit'
+SUBREDDIT_NAME = 'FrugalFemaleFashion'
 MIN_WAIT_TIME = 15
 MAX_WAIT_TIME = 45
 
@@ -25,23 +25,16 @@ subreddit = reddit.subreddit(SUBREDDIT_NAME)
 post_count = 0
 usernames = set()
 
-for post in subreddit.hot(limit=1):
+for post in subreddit.hot(limit=2):
     post_count += 1
     print(f"Post {post_count}: {post.title}")
     post.comments.replace_more(limit=None)
-    comments = post.comments.list()
-    for comment in comments:
+    for comment in post.comments.list():
         try:
             username = comment.author.name
             usernames.add(username)
         except AttributeError:
             pass
-        for reply in comment.replies:
-            try:
-                username = reply.author.name
-                usernames.add(username)
-            except AttributeError:
-                pass
 
 print(f"Found {len(usernames)} usernames.")
 
