@@ -21,19 +21,7 @@
 
 1. Rename the `.env.example` file to `.env`.
 1. Fill in the values in `.env`.
-1. Update `SUBJECT_LINES`, `MESSAGE_TEMPLATE`, and the line below the `TODO` in `main.py`.
-1. Set up a Python environment:
-   ```
-   python -m venv env
-   ```
-1. Activate the environment:
-   ```
-   .\env\Scripts\activate
-   ```
-1. Install dependencies:
-   ```
-   py -m pip install -r requirements.txt
-   ```
+1. Update `SUBREDDIT_NAME`, `SUBJECT_LINES`, `MESSAGE_TEMPLATE`, and the line below the `TODO` in `main.py`.
 1. Run the code:
    ```
    py main.py
