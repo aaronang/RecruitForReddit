@@ -55,6 +55,8 @@ for username in usernames:
                 f.write(f"{username}\n")
         except Exception as e:
             print(f"Failed to send message to {username}: {e}")
+            # Wait additional time to make sure we don't get a rate limit exception again.
+            wait_time = 2 * random.randint(MIN_WAIT_TIME, MAX_WAIT_TIME)
         wait_time = random.randint(MIN_WAIT_TIME, MAX_WAIT_TIME)
         print(f"Waiting {wait_time} seconds...")
         time.sleep(wait_time)
