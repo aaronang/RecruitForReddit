@@ -22,6 +22,7 @@ reddit = praw.Reddit(client_id=CONFIG.get("CLIENT_ID"),
                      password=CONFIG.get("PASSWORD"))
 
 subreddit = reddit.subreddit(SUBREDDIT_NAME)
+moderators = [mod.name for mod in subreddit.moderator()]
 
 post_count = 0
 usernames = set()
@@ -33,7 +34,7 @@ for post in subreddit.hot(limit=POST_LIMIT):
     for comment in post.comments.list():
         try:
             username = comment.author.name
-            if "mod" not in username.lower():
+            if username not in moderators:
                 usernames.add(username)
         except AttributeError:
             pass
